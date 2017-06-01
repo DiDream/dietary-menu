@@ -29,12 +29,12 @@ class DLL
             @head = @tail = Node.new(value, nil, nil)
             @length+=1
         else
-            insert_head(value)
+            insert(value)
         end
 
 
         (1...values.length).each do |i|
-            insert_head(values[i])
+            insert(values[i])
         end
 
     end
@@ -83,7 +83,7 @@ class DLL
     end
 
     private
-    def insert_head(value)
+    def insert(value)
         node = Node.new(value, @head, nil)
         @head.next = node
         @head = node
