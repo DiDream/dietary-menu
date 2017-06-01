@@ -15,11 +15,11 @@ class DLL
         @head = nil
         @tail = nil
         unless values.empty?
-            insert(*values)
+            push(*values)
         end
     end
 
-    def insert(*values)
+    def push(*values)
         if values.empty?
             raise "No hay valores a insertar"
         end
@@ -38,7 +38,13 @@ class DLL
         end
 
     end
-
+    def [](i)
+        node = @tail
+        i.times do
+            node = @tail.next
+        end
+        node.value
+    end
     def to_s( reverse = false )
         self.each(reverse) do |pointer|
             puts pointer
@@ -62,11 +68,12 @@ class DLL
 
     def each(reverse=false, &block)
         if(reverse)
-            pointer = @tail
-            prox = :next
-        else
             pointer = @head
             prox = :prev
+
+        else
+            pointer = @tail
+            prox = :next
         end
 
         while (pointer!=nil)
