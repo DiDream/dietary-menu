@@ -41,7 +41,7 @@ RSpec.describe Plato do
 end
 RSpec.describe Menu do
     before :all do
-        platos = DLL.new(
+        @platos = DLL.new(
             Plato.new({
                 descripcion: 'Macarrones con salsa de tomate y queso parmesano',
                 porcion: '1 1/2 cucharon',
@@ -72,7 +72,7 @@ RSpec.describe Menu do
         @menu = Menu.new({
             titulo: 'Almuerzo',
             porcentaje_diario: '30 - 35%',
-            platos: platos,
+            platos: @platos,
             vct: 785.9,
             proteinas: 19,
             grasas: 34,
@@ -84,6 +84,18 @@ RSpec.describe Menu do
     end
     it "Obtener un plato del menu" do
         expect(@menu[0]).to be_instance_of(Plato)
+    end
+    it "Menu comparable" do
+        @menu2 = Menu.new({
+            titulo: 'Almuerzo',
+            porcentaje_diario: '30 - 35%',
+            platos: @platos,
+            vct: 800,
+            proteinas: 19,
+            grasas: 34,
+            hidratos: 47
+            })
+        expect(@menu < @menu2).to be true
     end
 end
 RSpec.describe Dieta do

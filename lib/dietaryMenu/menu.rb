@@ -1,4 +1,6 @@
 class Menu
+	include Comparable
+
 	# titulo: almuerzo | cena | desayuno
     # vct: valance calorico total
 	attr_reader :titulo, :porcentaje_diario, :platos, :vct, :proteinas, :grasas, :hidratos
@@ -24,6 +26,11 @@ class Menu
 		description << @platos.map { |plato| "- #{plato}" }.join("\n")
 		description << "\nV.C.T. | % #{vct} kcal | #{proteinas}% - #{grasas}% - #{hidratos}%"
 		description
+	end
+
+	def <=>(other)
+		return nil if (other.class != Menu)
+		@vct <=> other.vct
 	end
 
 end
