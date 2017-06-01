@@ -1,5 +1,5 @@
 require "dietaryMenu/version"
-require "DietaryMenu/DLL"
+require "DietaryMenu/dll"
 require "DietaryMenu/plato"
 require "DietaryMenu/menu"
 require "DietaryMenu/dieta"
